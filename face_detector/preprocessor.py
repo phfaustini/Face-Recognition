@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import cv2
 
 from .person import Person
+from .utils import Utils
 
 
 class Preprocessor():
@@ -26,9 +27,10 @@ class Preprocessor():
         h += 80
         return img[y:y+h,x:x+w]
 
-    def load_image(self, filepath: str) -> np.ndarray:
+    def _load_image(self, filepath: str) -> tuple:
         """
-        Return a np.ndarray presentation of an image.
+        Return a tuple with a np.ndarray presentation of an image
+        and a label (class of the face).
         If an invalid path is provided, it returns an
         empty np.array.
 
@@ -39,14 +41,26 @@ class Preprocessor():
             img = cv2.cvtColor(img_raw, cv2.COLOR_BGR2GRAY)
         else:
             img = np.array([])
-        return img
+        label = filepath.split('/')[1]
+        return img, label
 
-    def get_face(self, img: np.ndarray) -> Person:
+    def load_images(self) -> list:
+        """It loads all faces images into a big list
+        of (img, label), where img is a np.ndarray
+        of the image and label is a string with the class
+        of that image.
+
+        :return: [(img: np.ndarray, label: str)]
+        """
+        return list(map(self._load_image, Utils.FILES))
+
+    def get_face(self, img: np.ndarray, label: str) -> Person:
         """
         It finds a face in the image, and return a Person
         object, with the img and their features coordinates.
 
         :param img: a grayscale image.
+        :paral label: class of that image (folder name)
         :return: a Person object, with the img and their features coordinates.
         """
         person = Person()
@@ -68,4 +82,8 @@ class Preprocessor():
         person.face = self._crop_image(img, faces)
         person.face_with_contours = img_copy
         person.eyes = eyes
+        person.nose = nose
+        person.original_img = img
+        person.face_resized = cv2.resize(cv2.equalizeHist(person.face), (512,512)) #  Equalising improves results a lot!!
+        person.label = label
         return person
