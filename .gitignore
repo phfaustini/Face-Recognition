@@ -1,3 +1,4 @@
 faces/*
 *.pyc
 *.zip
+.ipynb_checkpoints/*

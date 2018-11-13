@@ -12,13 +12,13 @@ class Model():
         """
         :param data: [(img: np.ndarray, label: str)]
         """
-        X = list(map(lambda t : t[0], data))
-        y = list(map(lambda t : t[1], data))
+        X = list(map(lambda t: t[0], data))
+        y = list(map(lambda t: t[1], data))
         X = np.array(X)
         target_names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X']
         y = np.array(y)
         nsamples, nx, ny = X.shape
-        X = X.reshape((nsamples,nx*ny))        
+        X = X.reshape((nsamples, nx*ny))
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 
         #  https://pythonmachinelearning.pro/face-recognition-with-eigenfaces/

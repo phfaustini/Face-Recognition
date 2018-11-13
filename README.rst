@@ -13,6 +13,5 @@ Structure:
 ----------
 
 * **face_detector/** - Source code.
-* **faces/** - .jpg files.
+* **faces/** - .jpg files inside A-X folders.
 * **cascades/** - .xml cascades files for feature recognition. See more in http://alereimondo.no-ip.org/OpenCV/34
-* **dataset/** - It contains structured objects used for training and testing.

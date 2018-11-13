@@ -1,6 +1,6 @@
 import os
 
-import numpy as np 
+import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
@@ -8,7 +8,7 @@ import cv2
 class Utils():
 
     """Class with auxiliary methods."""
-    
+
     FILES = ['faces/A/image_0001.jpg',
             'faces/A/image_0002.jpg',
             'faces/A/image_0003.jpg',
@@ -250,6 +250,11 @@ class Utils():
             'faces/M/image_0239.jpg',
             'faces/M/image_0240.jpg',
             'faces/M/image_0241.jpg',
+            'faces/N/image_0404.jpg',
+            'faces/N/image_0405.jpg',
+            'faces/N/image_0406.jpg',
+            'faces/N/image_0407.jpg',
+            'faces/N/image_0408.jpg',
             'faces/O/image_0242.jpg',
             'faces/O/image_0243.jpg',
             'faces/O/image_0244.jpg',
@@ -448,13 +453,7 @@ class Utils():
             'faces/X/image_0447.jpg',
             'faces/X/image_0448.jpg',
             'faces/X/image_0449.jpg',
-            'faces/X/image_0450.jpg',
-            'faces/Y/image_0404.jpg',
-            'faces/Y/image_0405.jpg',
-            'faces/Y/image_0406.jpg',
-            'faces/Y/image_0407.jpg',
-            'faces/Y/image_0408.jpg']
-
+            'faces/X/image_0450.jpg']
 
     def display_image(self, img: np.ndarray):
         """Display an image until window is closed."""
