@@ -141,11 +141,6 @@ class Utils():
             'faces/G/image_0130.jpg',
             'faces/G/image_0131.jpg',
             'faces/G/image_0132.jpg',
-            'faces/H/image_0133.jpg',
-            'faces/H/image_0134.jpg',
-            'faces/H/image_0135.jpg',
-            'faces/H/image_0136.jpg',
-            'faces/H/image_0137.jpg',
             'faces/H/image_0138.jpg',
             'faces/H/image_0139.jpg',
             'faces/H/image_0140.jpg',
@@ -179,11 +174,6 @@ class Utils():
             'faces/J/image_0168.jpg',
             'faces/J/image_0169.jpg',
             'faces/J/image_0170.jpg',
-            'faces/K/image_0171.jpg',
-            'faces/K/image_0172.jpg',
-            'faces/K/image_0173.jpg',
-            'faces/K/image_0174.jpg',
-            'faces/K/image_0175.jpg',
             'faces/K/image_0176.jpg',
             'faces/K/image_0177.jpg',
             'faces/K/image_0178.jpg',
@@ -453,10 +443,29 @@ class Utils():
             'faces/X/image_0447.jpg',
             'faces/X/image_0448.jpg',
             'faces/X/image_0449.jpg',
-            'faces/X/image_0450.jpg']
+            'faces/X/image_0450.jpg',
+            'faces/Y/image_0133.jpg',
+            'faces/Y/image_0134.jpg',
+            'faces/Y/image_0135.jpg',
+            'faces/Y/image_0136.jpg',
+            'faces/Y/image_0137.jpg',
+            'faces/Z/image_0171.jpg',
+            'faces/Z/image_0172.jpg',
+            'faces/Z/image_0173.jpg',
+            'faces/Z/image_0174.jpg',
+            'faces/Z/image_0175.jpg']
 
     def display_image(self, img: np.ndarray):
         """Display an image until window is closed."""
         cv2.imshow('Image', img)
         cv2.waitKey(0)
         cv2.destroyallwindows()
+
+    def imshow(self, img, colour=False):
+        """Display image in jupyter notebook."""
+        plt.axis('off')
+        if not colour:
+            plt.imshow(img, cmap='gray')
+        else:
+            plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)) #  OpenCV armazena em BGR, nao RGB
+        plt.show()

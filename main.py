@@ -1,5 +1,4 @@
 from face_detector.preprocessor import Preprocessor
-from face_detector.transformer import Transformer
 from face_detector.model import Model
 from face_detector.utils import Utils
 

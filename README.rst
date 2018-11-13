@@ -2,6 +2,18 @@
 Face Detector
 *************
 
+This project uses Neural Networks to identify who is who
+in images of faces.
+
+First, faces in images are identified and cropped. A
+histogram equalisation is performed, and the resulting image is
+scaled to 512x512 pixels. Then, it is passed to a PCA
+algorithm to reduce dimensionality (each pixel is a pixel).
+
+Finally, a neural network is trained with 70% of the dataset,
+and the remainig is used for testing. The goal is to provide 
+and image to the model, and the model must say who is the person
+in that image.
 
 Environment used:
 -----------------
@@ -13,5 +25,6 @@ Structure:
 ----------
 
 * **face_detector/** - Source code.
-* **faces/** - .jpg files inside A-X folders.
+* **faces/** - .jpg files inside A-X folders. Dataset used: http://www.vision.caltech.edu/Image_Datasets/faces/faces.tar
 * **cascades/** - .xml cascades files for feature recognition. See more in http://alereimondo.no-ip.org/OpenCV/34
+* **experiments.ipynb** - jupyter notebook with results.

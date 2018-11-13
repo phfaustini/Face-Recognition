@@ -1,4 +1,4 @@
-opencv-python
-numpy
-matplotlib
-scikit-learn
+opencv-python>=3.4.3.18
+numpy>=1.13.3
+matplotlib>=2.1.0
+scikit-learn>=0.19.1
