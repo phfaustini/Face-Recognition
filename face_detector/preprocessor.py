@@ -90,6 +90,6 @@ class Preprocessor():
         person.eyes = eyes
         person.nose = nose
         person.original_img = img
-        person.face_resized = cv2.resize(cv2.equalizeHist(person.face), (512, 512))  # Equalising improves results a lot!!
+        person.face_resized = cv2.resize(cv2.equalizeHist(person.face), (512, 512))
         person.label = label
         return person

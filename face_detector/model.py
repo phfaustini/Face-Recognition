@@ -5,6 +5,10 @@ from sklearn.metrics import classification_report
 from sklearn.decomposition import PCA
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+import warnings
+warnings.filterwarnings('ignore')
 
 
 class Model():
@@ -28,8 +32,24 @@ class Model():
         X_train_pca = pca.transform(X_train)
         X_test_pca = pca.transform(X_test)
 
+        print("SVM: ")
         clf = SVC()
         clf.fit(X_train_pca, y_train)
         #clf = MLPClassifier(hidden_layer_sizes=(1024,), solver='lbfgs', batch_size=256).fit(X_train_pca, y_train)
         y_pred = clf.predict(X_test_pca)
         print(classification_report(y_test, y_pred, target_names=target_names))
+        print()
+
+        print("LDA: ")
+        clf = LinearDiscriminantAnalysis()
+        clf.fit(X_train_pca, y_train)
+        y_pred = clf.predict(X_test_pca)
+        print(classification_report(y_test, y_pred, target_names=target_names))
+        print()
+
+        print("Naive Bayes: ")
+        clf = GaussianNB()
+        clf.fit(X_train_pca, y_train)
+        y_pred = clf.predict(X_test_pca)
+        print(classification_report(y_test, y_pred, target_names=target_names))
+        print()
