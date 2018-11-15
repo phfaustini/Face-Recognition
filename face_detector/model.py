@@ -27,7 +27,7 @@ class Model():
         X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.3)
 
         n_components = 100
-        pca = PCA(n_components=n_components,random_state=42, whiten=True).fit(X_train)
+        pca = PCA(n_components=n_components, random_state=42, whiten=True).fit(X_train)
         X_train_pca = pca.transform(X_train)
         X_test_pca = pca.transform(X_test)
 

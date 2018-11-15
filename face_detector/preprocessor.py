@@ -67,8 +67,8 @@ class Preprocessor():
         """
         person = Person()
         img_copy = img.copy()
-        # face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_alt.xml')
-        face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
+        face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_alt.xml')
+        # face_cascade = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
         eye_cascade = cv2.CascadeClassifier('cascades/haarcascade_eye.xml')
         nose_cascade = cv2.CascadeClassifier('cascades/Nariz.xml')
         faces = face_cascade.detectMultiScale(img_copy, 1.3, 5)
