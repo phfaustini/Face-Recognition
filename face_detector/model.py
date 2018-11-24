@@ -1,17 +1,29 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import classification_report
+from sklearn.model_selection import cross_val_score
+from sklearn.metrics import classification_report, accuracy_score, make_scorer
+from sklearn.model_selection import StratifiedKFold
 from sklearn.decomposition import PCA
-from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 import warnings
 warnings.filterwarnings('ignore')
 
 
 class Model():
+    
+    def _classification_report_with_accuracy_score(self, y_true, y_pred):
+        print(classification_report(y_true, y_pred))
+        return accuracy_score(y_true, y_pred)
+    
+    def _show_results(self, clf, data, y):
+        nested_score = cross_val_score(clf, data, y, cv=StratifiedKFold(3, random_state=1), scoring=make_scorer(self._classification_report_with_accuracy_score))
+        print("Accuracy in each run = {0}".format(nested_score))
+        print("Accuracy (general): %0.2f (+/- %0.2f)" % (nested_score.mean(), nested_score.std() * 2))
+        print("------------------------------------------------------------")
+        print()
 
     def classify(self, data: list):
         """
@@ -24,30 +36,23 @@ class Model():
         y = np.array(y)
         nsamples, nx, ny = X.shape
         X = X.reshape((nsamples, nx*ny))
-        X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42, test_size=0.3)
 
         n_components = 100
-        pca = PCA(n_components=n_components, random_state=42, whiten=True).fit(X_train)
-        X_train_pca = pca.transform(X_train)
-        X_test_pca = pca.transform(X_test)
+        pca = PCA(n_components=n_components, random_state=42, whiten=True).fit(X)
+        X_train_pca = pca.transform(X)
 
         print("SVM: ")
         clf = SVC(random_state=42)
-        clf.fit(X_train_pca, y_train)
-        y_pred = clf.predict(X_test_pca)
-        print(classification_report(y_test, y_pred, target_names=target_names, labels=np.array(target_names)))
-        print()
+        self._show_results(clf, X_train_pca, y)
 
         print("LDA: ")
         clf = LinearDiscriminantAnalysis()
-        clf.fit(X_train_pca, y_train)
-        y_pred = clf.predict(X_test_pca)
-        print(classification_report(y_test, y_pred, target_names=target_names, labels=np.array(target_names)))
-        print()
+        self._show_results(clf, X_train_pca, y)
 
         print("Naive Bayes: ")
         clf = GaussianNB()
-        clf.fit(X_train_pca, y_train)
-        y_pred = clf.predict(X_test_pca)
-        print(classification_report(y_test, y_pred, target_names=target_names, labels=np.array(target_names)))
-        print()
+        self._show_results(clf, X_train_pca, y)
+
+        print("3NN: ")
+        clf = KNeighborsClassifier(n_neighbors=3)
+        self._show_results(clf, X_train_pca, y)
