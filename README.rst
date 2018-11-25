@@ -9,7 +9,7 @@ Uma equalização de histograma é feita e a imagem resultante é reescalada par
 Então, é aplicado o algoritmo PCA para reduzir a dimensionalidade (pois cada pixel é um atributo).
 
 Finalmente, diferentes algoritmos de classificação são usados.
-Modelos são treinados com 70% do dataset, e os 30% restantes são usados para teste.
+Modelos são treinados com validação cruzada, sendo 70% do dataset usado para treino e os 30% restantes para teste.
 
 
 Ambiente usado:
@@ -23,13 +23,13 @@ Estrutura:
 
 * **face_detector/** - código fonte.
 * **faces/** - Arquivos .jpg dentro de pastas nomeadas de A-X. Dataset usado: http://www.vision.caltech.edu/Image_Datasets/faces/faces.tar
-* **cascades/** - .xml cascades para identificar faces. See more in http://alereimondo.no-ip.org/OpenCV/34
+* **cascades/** - .xml cascades para identificar faces.
 * **relatorio.ipynb** - jupyter notebook com o relatório.
 * **slides.ipynb** - jupyter notebook com os relatório em formato de slides e com o código copiado nas células.
 
 
 ATENÇÃO!!!!!!!
-É necessário que a pasta **faces/** tenha subpastas nomeadas de A-X. Ela deve ser baixada do link abaixo, que já fornece as imagens na estrutura de pastas necessária:
+É necessário que a pasta **faces/** tenha subpastas nomeadas de A-Z. Ela deve ser baixada do link abaixo, que já fornece as imagens na estrutura de pastas necessária:
 
 https://drive.google.com/open?id=1QmCAA0mJHP8sIXtD19d5TuucC_7ynaLw
 

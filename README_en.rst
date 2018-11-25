@@ -11,13 +11,13 @@ scaled to 512x512 pixels. Then, it is passed to a PCA
 algorithm to reduce dimensionality (each pixel is a feature).
 
 Finally, different classification algorithms are used. Models are 
-trained with 70% of the dataset, and the remainig is used for testing. 
+trained cross-validation, with 70% of the dataset used for training, and the remainig is used for testing. 
 The goal is to provide and image to the model, and the model must 
 say who is the person in that image.
 
 Environment used:
 -----------------
-* `Python3.6 + Anaconda <https://www.anaconda.com/download/#linux>`_
+* `Python3.7 + Anaconda <https://www.anaconda.com/download/#linux>`_
 * See `requirements.txt <requirements.txt>`_
 
 
