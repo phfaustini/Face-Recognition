@@ -29,5 +29,4 @@ Structure:
 * **cascades/** - .xml cascades files for feature recognition. See more in http://alereimondo.no-ip.org/OpenCV/34
 * **main.py** - Just type :code:`python main` to run experiments.
 
-For copyright issues, I do not make pictures used publicly available. However, they can be found at http://www.vision.caltech.edu/Image_Datasets/faces/faces.tar.
-Their organisation into *faces* folder follows the folder structure according to file *face_detector/utils.py*.
+Images folder structure inside *faces* folder follows the folder structure according to file *face_detector/utils.py*.

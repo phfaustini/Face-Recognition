@@ -8,7 +8,7 @@ if __name__ == "__main__":
     m = Model()
 
     data = []
-    imgs = p.load_images()  # [(img: np.ndarray, label: str)]
+    imgs = p.load_images()
     for img in imgs:
         person = p.get_face(img=img[0], label=img[1])
         if person is not None:
