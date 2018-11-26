@@ -1,35 +1,34 @@
-*************
-Face Detector
-*************
+****************
+Face Recognition
+****************
 
-Este projeto usa aprendizado supervisionado para identificar quem é quem imagens de faces.
+This project uses supervised learning to identify who is who
+in images of faces.
 
-Primeiro, as faces são identificadas e cortadas nas imagens. 
-Uma equalização de histograma é feita e a imagem resultante é reescalada para 512x512.
-Então, é aplicado o algoritmo PCA para reduzir a dimensionalidade (pois cada pixel é um atributo).
+First, faces in images are identified and cropped. A
+histogram equalisation is performed, and the resulting image is
+scaled to 512x512 pixels. Then, it is passed to a PCA
+algorithm to reduce dimensionality (each pixel is a feature).
 
-Finalmente, diferentes algoritmos de classificação são usados.
-Modelos são treinados com validação cruzada, sendo 70% do dataset usado para treino e os 30% restantes para teste.
+Finally, different classification algorithms are used. Models are 
+trained cross-validation, with 70% of the dataset used for training, and the remainig is used for testing. 
+The goal is to provide and image to the model, and the model must 
+say who is the person in that image.
 
-
-Ambiente usado:
+Environment used:
 -----------------
 * `Python3.7 + Anaconda <https://www.anaconda.com/download/#linux>`_
-* Ver `requirements.txt <requirements.txt>`_
+* See `requirements.txt <requirements.txt>`_
 
 
-Estrutura:
+Structure:
 ----------
 
-* **face_detector/** - código fonte.
-* **faces/** - Arquivos .jpg dentro de pastas nomeadas de A-X. Dataset usado: http://www.vision.caltech.edu/Image_Datasets/faces/faces.tar
-* **cascades/** - .xml cascades para identificar faces.
-* **relatorio.ipynb** - jupyter notebook com o relatório.
-* **slides.ipynb** - jupyter notebook com os relatório em formato de slides e com o código copiado nas células.
+* **face_detector/** - Source code.
+* **faces/** - .jpg files inside A-X folders. Dataset used: http://www.vision.caltech.edu/Image_Datasets/faces/faces.tar
+* **cascades/** - .xml cascades files for feature recognition. See more in http://alereimondo.no-ip.org/OpenCV/34
+* **experiments.ipynb** - jupyter notebook with results.
+* **main.py** - Just type :code:`python main` to run experiments.
 
-
-ATENÇÃO!!!!!!!
-É necessário que a pasta **faces/** tenha subpastas nomeadas de A-Z. Ela deve ser baixada do link abaixo, que já fornece as imagens na estrutura de pastas necessária:
-
-https://drive.google.com/open?id=1QmCAA0mJHP8sIXtD19d5TuucC_7ynaLw
-
+For copyright issues, I do not make pictures used publicly available. However, they can be found at http://www.vision.caltech.edu/Image_Datasets/faces/faces.tar.
+Their organisation into *faces* folder follows the folder structure according to file *face_detector/utils.py*.
