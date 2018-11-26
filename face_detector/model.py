@@ -37,8 +37,7 @@ class Model():
         nsamples, nx, ny = X.shape
         X = X.reshape((nsamples, nx*ny))
 
-        n_components = 100
-        pca = PCA(n_components=n_components, random_state=42, whiten=True).fit(X)
+        pca = PCA(n_components=50, random_state=42, whiten=True).fit(X)
         X_train_pca = pca.transform(X)
 
         print("SVM: ")
